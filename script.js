@@ -392,3 +392,49 @@ passwordInput.value = "";
         }
     });
 });
+const emailInput = document.getElementById("emailInput");
+
+emailInput.addEventListener("input", validateEmail);
+
+function validateEmail(){
+
+    const email = emailInput.value.trim();
+
+    const emailRegex =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(email === ""){
+        emailInput.classList.remove("is-valid","is-invalid");
+    }
+    else if(emailRegex.test(email)){
+        emailInput.classList.remove("is-invalid");
+        emailInput.classList.add("is-valid");
+    }
+    else{
+        emailInput.classList.remove("is-valid");
+        emailInput.classList.add("is-invalid");
+    }
+
+    validateForm();
+}
+const isEmailValid =
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+.test(emailInput.value.trim());
+
+if(
+    isRoleSelected &&
+    isNameValid &&
+    isMobileValid &&
+    isEmailValid &&
+    isPasswordValid
+){
+    loginBtn.disabled = false;
+}
+else{
+    loginBtn.disabled = true;
+}
+const mobileInput = document.getElementById("mobileInput");
+
+mobileInput.addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, "").slice(0, 10);
+});

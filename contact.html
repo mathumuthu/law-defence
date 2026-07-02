@@ -254,7 +254,7 @@
                 <div style="display:flex; align-items:center; gap:16px;">
                     <a class="header-email" onclick="goTo404()">
                         <i class="fas fa-envelope"></i>
-                        <span>info@lawhere.com</span>
+                        <span>info@stackly.com</span>
                     </a>
                  <a href="login.html">   <button class="btn-login" onclick="goTo404()">
                         <i class="fas fa-user"></i>
@@ -310,17 +310,17 @@
                 <div class="contact-info-card fade-in">
                     <div class="contact-info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <h3 class="contact-info-card-title">Visit Us</h3>
-                    <p class="contact-info-card-text">No: 58 A, East Madison Street<br>Baltimore, MD, USA 4508</p>
+                    <p class="contact-info-card-text">China thirupathi Street<br>Salem 4508</p>
                 </div>
                 <div class="contact-info-card fade-in">
                     <div class="contact-info-card-icon"><i class="fas fa-phone-alt"></i></div>
                     <h3 class="contact-info-card-title">Call Us</h3>
-                    <p class="contact-info-card-text">000 - 123 - 456789<br>000 - 123 - 456789</p>
+                    <p class="contact-info-card-text"> 000 -91087-65432<br>000 - 91234 - 56789</p>
                 </div>
                 <div class="contact-info-card fade-in">
                     <div class="contact-info-card-icon"><i class="fas fa-envelope"></i></div>
                     <h3 class="contact-info-card-title">Email Us</h3>
-                    <p class="contact-info-card-text">info@lawhere.com<br>contact@lawhere.com</p>
+                    <p class="contact-info-card-text">info@stackly.com<br>contact@stackly.com</p>
                 </div>
                 <div class="contact-info-card fade-in">
                     <div class="contact-info-card-icon"><i class="fas fa-clock"></i></div>
@@ -349,12 +349,22 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">First Name *</label>
-                                <input type="text" class="form-input" id="firstName" required placeholder="John">
-                            </div>
+                               <input type="text"
+class="form-input"
+       id="firstName"
+       required
+       placeholder="John"
+       pattern="[A-Za-z ]+"
+       oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')">
                             <div class="form-group">
-                                <label class="form-label">Last Name *</label>
-                                <input type="text" class="form-input" id="lastName" required placeholder="Doe">
-                            </div>
+                                <label class="form-label">Last Name *</label></div>
+<input type="text"
+       class="form-input"
+       id="lastName"
+       required
+       placeholder="Doe"
+       pattern="[A-Za-z ]+"
+       oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')">                            </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
@@ -363,7 +373,13 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Phone *</label>
-                                <input type="tel" class="form-input" id="contactPhone" required placeholder="+1 234 567 890">
+                               <input type="tel"
+       class="form-input"
+       id="contactPhone"
+       required
+       maxlength="10"
+       placeholder="9876543210"
+       oninput="this.value=this.value.replace(/[^0-9]/g,'')">
                             </div>
                         </div>
                         <div class="form-group full">
@@ -522,11 +538,11 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                                               <a href="index.html" class="logo">
+                    <a href="index.html" class="logo">
     <img src="logo.webp" alt="Starkly Logo" class="logo-img">
     <span class="logo-text">Stackly</span>
 </a>
-                    <p class="footer-brand-text">Sociosqu erat malesuada lacus vulputate torquent tempus adipiscing.</p>
+                    <p class="footer-brand-text">"The team explained every legal step in simple terms and made the entire experience stress-free.".</p>
                     <div class="footer-social">
                         <a class="footer-social-link" onclick="goTo404()"><i class="fab fa-facebook-f"></i></a>
                         <a class="footer-social-link" onclick="goTo404()"><i class="fab fa-x-twitter"></i></a>
@@ -542,23 +558,25 @@
                             <button type="submit" class="footer-newsletter-btn"><i class="fas fa-arrow-right"></i></button>
                         </div>
                     </form>
-                    <p class="footer-newsletter-text">Vivamus cursus ipsum risus urna sapien.</p>
+                    <p class="footer-newsletter-text">Ensure confidentiality and privacy. .</p>
                 </div>
                 <div class="footer-links">
-                    <h3 class="footer-links-title">Browse Information</h3>
+                    <h3 class="footer-links-title">Quick Links</h3>
                     <ul class="footer-links-list">
-                        <li><a onclick="goTo404()">Find a Lawyer</a></li>
-                        <li><a onclick="goTo404()">Legal Law Advise</a></li>
-                        <li><a onclick="goTo404()">Lawyer Review</a></li>
-                        <li><a onclick="goTo404()">Practice Area</a></li>
-                        <li><a onclick="goTo404()">Law Journals</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Service</a></li>
+                        <li><a href="airt.html">Airticals</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
+
+                
             </div>
             <div class="footer-bottom">
                 <div class="footer-bottom-left">
                     Call Us: <a onclick="goTo404()">+000-123-456789</a><br>
-                    Email Us: <a onclick="goTo404()">info@example.com</a>
+                    Email Us: <a onclick="goTo404()">info@stackly.com</a>
                 </div>
                 <div class="footer-payments">
                     <div class="footer-payment-icon">PayPal</div>
@@ -568,7 +586,7 @@
                     <div class="footer-payment-icon">VISA</div>
                 </div>
                 <div class="footer-copyright">
-                    Copyright @wedesignthemes, All Rights Reserved 2024
+                    Copyright@stackly, All Rights Reserved 2024
                 </div>
             </div>
         </div>
@@ -607,6 +625,31 @@
             const email = document.getElementById('contactEmail').value.trim();
             const phone = document.getElementById('contactPhone').value.trim();
             const message = document.getElementById('contactMessage').value.trim();
+
+
+if (!/^[A-Za-z ]+$/.test(firstName)) {
+    showAlert("First Name should contain only letters.", "Error");
+    return;
+}
+
+if (!/^[A-Za-z ]+$/.test(lastName)) {
+    showAlert("Last Name should contain only letters.", "Error");
+    return;
+}
+
+if (!/^[0-9]{10}$/.test(phone)) {
+    showAlert("Phone Number must contain exactly 10 digits.", "Error");
+    return;
+}
+
+
+
+
+
+
+
+
+
             if (!firstName || !lastName || !email || !phone || !message) { showAlert('Please fill in all required fields.', 'Error'); return; }
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) { showAlert('Please enter a valid email address.', 'Error'); return; }
@@ -634,6 +677,40 @@
         });
         document.getElementById('alertOverlay').addEventListener('click', function(e) { if (e.target === this) closeAlert(); });
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAlert(); });
+    
+    
+    
+    document.querySelectorAll(".faq-item").forEach(item => {
+    const answer = item.querySelector(".faq-answer");
+
+    answer.style.display = "none";
+
+    item.addEventListener("click", () => {
+        const icon = item.querySelector("i");
+
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            icon.style.transform = "rotate(0deg)";
+        } else {
+            answer.style.display = "block";
+            icon.style.transform = "rotate(90deg)";
+        }
+    });
+});
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     </script>
 </body>
 </html>

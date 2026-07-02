@@ -817,3 +817,21 @@ body {
     height:90px;
     object-fit:contain;
 }
+.back-home{
+    margin-bottom:20px;
+}
+
+.back-home-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:whitesmoke;
+    font-weight:600;
+    transition:.3s;
+}
+
+.back-home-btn:hover{
+    color:whitesmoke;
+    transform:translateX(-4px);
+}

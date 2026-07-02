@@ -16,7 +16,7 @@
             border: 1px solid var(--bg-card-border);
             border-radius: 24px;
             padding: 40px 35px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(  fbdv  xdgvdgbgbvn);
             animation: cardAppear 0.8s ease-out;
         }
         .create-password-card:hover {
@@ -58,7 +58,7 @@
             .create-password-card { padding: 30px 20px; }
         }
     </style>
-<base target="_blank">
+<!-- <base target="_blank"> -->
 </head>
 <body>
     <div class="bg-animation">
@@ -104,12 +104,58 @@
                             <label for="newMobile" class="form-label">
                                 <i class="fas fa-mobile-alt me-2"></i>Mobile Number
                             </label>
-                            <div class="input-wrapper">
-                                <input type="tel" class="form-control" id="newMobile" placeholder="Enter your mobile number">
+                            <div class="input-wrapper"><input
+    type="tel"
+    class="form-control"
+    id="newMobile"
+    placeholder="Enter your mobile number"
+    maxlength="10"
+    inputmode="numeric">
                                 <span class="input-icon"><i class="fas fa-check-circle"></i></span>
                             </div>
                             <div class="invalid-feedback" id="newMobileError">Only numbers are allowed.</div>
                         </div>
+
+
+
+
+
+
+
+<!-- Email Field -->
+<div class="form-group mb-3">
+    <label for="emailInput" class="form-label">
+        <i class="fas fa-envelope me-2"></i>Email Address
+    </label>
+
+    <div class="input-wrapper">
+        <input
+            type="email"
+            class="form-control"
+            id="emailInput"
+            placeholder="Enter your email address"
+            autocomplete="off">
+
+        <span class="input-icon">
+            <i class="fas fa-check-circle"></i>
+        </span>
+    </div>
+
+    <div class="invalid-feedback" id="emailError">
+        Please enter a valid email address.
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                        
 
                         <div class="form-group mb-3">
                             <label for="newPassword" class="form-label">
@@ -144,7 +190,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-login" id="createBtn" disabled>
-                            <span class="btn-text">Create Password</span>
+                            <span class="btn-text">Create account</span>
                             <span class="btn-loader"><i class="fas fa-spinner fa-spin"></i></span>
                         </button>
                     </form>
@@ -251,6 +297,90 @@
                 }, 2000);
             });
         });
+
+
+
+
+
+
+
+
+const emailInput = document.getElementById("emailInput");
+
+emailInput.addEventListener("input", validateEmail);
+
+function validateEmail(){
+
+    const email = emailInput.value.trim();
+
+    const emailRegex =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(email === ""){
+        emailInput.classList.remove("is-valid","is-invalid");
+    }
+    else if(emailRegex.test(email)){
+        emailInput.classList.remove("is-invalid");
+        emailInput.classList.add("is-valid");
+    }
+    else{
+        emailInput.classList.remove("is-valid");
+        emailInput.classList.add("is-invalid");
+    }
+
+    validateForm();
+}const isEmailValid =
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+.test(emailInput.value.trim());
+
+if(
+    isRoleSelected &&
+    isNameValid &&
+    isMobileValid &&
+    isEmailValid &&
+    isPasswordValid
+){
+    loginBtn.disabled = false;
+}
+else{
+    loginBtn.disabled = true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function validateNewMobile(v) {
+
+    const clean = v.replace(/\D/g, "").slice(0, 10);
+
+    newMobile.value = clean;
+
+    const ok = clean.length === 10;
+
+    isNewMobileValid = ok;
+
+    newMobile.classList.toggle("is-valid", ok);
+    newMobile.classList.toggle("is-invalid", clean.length > 0 && !ok);
+
+    document.getElementById("newMobileError")
+        .classList.toggle("show", clean.length > 0 && !ok);
+
+    checkCreateValidity();
+}
+
+
+
+
+
+
     </script>
 </body>
 </html>

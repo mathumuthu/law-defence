@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const nameInput = document.getElementById('nameInput');
     const mobileInput = document.getElementById('mobileInput');
     const passwordInput = document.getElementById('passwordInput');
+    const emailInput = document.getElementById('emailInput');
+const emailError = document.getElementById('emailError');
     const togglePassword = document.getElementById('togglePassword');
     const passwordValidation = document.getElementById('passwordValidation');
     const loginBtn = document.getElementById('loginBtn');
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isNameValid = false;
     let isMobileValid = false;
     let isPasswordValid = false;
-
+let isEmailValid = false;
     // Password validation elements
     const valLength = document.getElementById('valLength');
     const valUpper = document.getElementById('valUpper');
@@ -146,7 +148,58 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileInput.addEventListener('blur', function() {
         validateMobile(this.value);
     });
+// ============================================
+// Email Validation
+// ============================================
+function validateEmail(value) {
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (value.trim() === "") {
+
+        emailInput.classList.remove("is-valid", "is-invalid");
+        emailError.classList.remove("show");
+        isEmailValid = false;
+
+    } else if (emailRegex.test(value.trim())) {
+
+        emailInput.classList.remove("is-invalid");
+        emailInput.classList.add("is-valid");
+        emailError.classList.remove("show");
+        isEmailValid = true;
+
+    } else {
+
+        emailInput.classList.remove("is-valid");
+        emailInput.classList.add("is-invalid");
+        emailError.classList.add("show");
+        isEmailValid = false;
+    }
+
+    checkFormValidity();
+}
+emailInput.addEventListener("input", function () {
+    validateEmail(this.value);
+});
+
+emailInput.addEventListener("blur", function () {
+    validateEmail(this.value);
+});
+function checkFormValidity() {
+
+    if (
+        selectedRole &&
+        isNameValid &&
+        isMobileValid &&
+        isEmailValid &&
+        isPasswordValid
+    ) {
+        loginBtn.disabled = false;
+    } else {
+        loginBtn.disabled = true;
+    }
+}
+validateEmail(emailInput.value);
     // ============================================
     // Password Validation
     // ============================================
@@ -230,14 +283,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // Check Form Validity
     // ============================================
-    function checkFormValidity() {
-        if (selectedRole && isNameValid && isMobileValid && isPasswordValid) {
-            loginBtn.disabled = false;
-        } else {
-            loginBtn.disabled = true;
-        }
+   function checkFormValidity() {
+    if (
+        selectedRole &&
+        isNameValid &&
+        isMobileValid &&
+        isEmailValid &&
+        isPasswordValid
+    ) {
+        loginBtn.disabled = false;
+    } else {
+        loginBtn.disabled = true;
     }
-
+}
     // ============================================
     // Form Submission
     // ============================================
@@ -345,6 +403,7 @@ passwordInput.value = "";
                 // Trigger validation
                 validateName(nameInput.value);
                 validateMobile(mobileInput.value);
+                
             } catch (e) {
                 console.error('Error loading remembered data:', e);
             }
@@ -437,4 +496,47 @@ const mobileInput = document.getElementById("mobileInput");
 
 mobileInput.addEventListener("input", function () {
     this.value = this.value.replace(/\D/g, "").slice(0, 10);
+});
+
+
+
+
+
+
+
+// ============================================
+// Email Validation
+// ============================================
+function validateEmail(value) {
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (value.length === 0) {
+
+        emailInput.classList.remove("is-valid", "is-invalid");
+        emailError.classList.remove("show");
+        isEmailValid = false;
+
+    } else if (emailRegex.test(value)) {
+
+        emailInput.classList.remove("is-invalid");
+        emailInput.classList.add("is-valid");
+        emailError.classList.remove("show");
+        isEmailValid = true;
+
+    } else {
+
+        emailInput.classList.remove("is-valid");
+        emailInput.classList.add("is-invalid");
+        emailError.classList.add("show");
+        isEmailValid = false;
+    }
+
+    checkFormValidity();
+}emailInput.addEventListener("input", function () {
+    validateEmail(this.value);
+});
+
+emailInput.addEventListener("blur", function () {
+    validateEmail(this.value);
 });

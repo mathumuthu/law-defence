@@ -2375,7 +2375,129 @@ ul {
 
 
 
+/* =========================
+   MOBILE RESPONSIVE FIX
+========================= */
 
+html,
+body{
+    overflow-x:hidden;
+    width:100%;
+}
+
+.main-wrapper{
+    width:100%;
+    overflow-x:hidden;
+}
+
+.main-content{
+    width:100%;
+    overflow-x:hidden;
+}
+
+/* Cards */
+@media (max-width:768px){
+
+    .row{
+        --bs-gutter-x:1rem;
+    }
+
+    .stat-card{
+        margin-bottom:15px;
+    }
+
+    .stat-card-content{
+        flex-direction:column;
+        gap:15px;
+        align-items:flex-start;
+    }
+
+    .stat-icon{
+        align-self:flex-end;
+    }
+
+    .content-card{
+        overflow:hidden;
+    }
+
+    .card-body-custom{
+        padding:15px;
+    }
+
+}
+
+/* Charts */
+
+@media (max-width:768px){
+
+    .chart-placeholder{
+        height:220px;
+    }
+
+    .chart-bars{
+        height:170px;
+        gap:8px;
+    }
+
+    .chart-bar{
+        min-width:14px;
+    }
+
+}
+
+/* Tables */
+
+.table-responsive{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+.table-custom{
+    min-width:700px;
+}
+
+/* Header */
+
+@media(max-width:768px){
+
+    .main-header{
+        padding:0 12px;
+    }
+
+    .header-right{
+        gap:6px;
+    }
+
+    .profile-btn{
+        padding:5px;
+        border:none;
+    }
+
+}
+
+/* Sidebar */
+
+@media(max-width:768px){
+
+    .sidebar{
+        width:260px;
+    }
+
+}
+
+/* Content */
+
+@media(max-width:768px){
+
+    .section-title{
+        font-size:22px;
+    }
+
+    .main-content{
+        padding:15px;
+    }
+
+}
 
 
 

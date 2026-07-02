@@ -209,8 +209,11 @@
             const createBtn = document.getElementById('createBtn');
             const createForm = document.getElementById('createPasswordForm');
 
-            let isNewNameValid = false, isNewMobileValid = false, isNewPasswordValid = false, isConfirmValid = false;
-
+let isNewNameValid = false,
+    isNewMobileValid = false,
+    isEmailValid = false,
+    isNewPasswordValid = false,
+    isConfirmValid = false;
             function validateNewName(v) {
                 const clean = v.replace(/[^a-zA-Z\s]/g, '');
                 if (v !== clean) newName.value = clean;
@@ -232,6 +235,34 @@
                 newMobile.classList.toggle('is-invalid', v.length > 0 && !ok);
                 document.getElementById('newMobileError').classList.toggle('show', v.length > 0 && !ok);
                 checkCreateValidity();
+
+                const emailInput = document.getElementById("emailInput");
+
+function validateEmail() {
+
+    const email = emailInput.value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    isEmailValid = emailRegex.test(email);
+
+    if (email === "") {
+        emailInput.classList.remove("is-valid", "is-invalid");
+        isEmailValid = false;
+    }
+    else if (isEmailValid) {
+        emailInput.classList.remove("is-invalid");
+        emailInput.classList.add("is-valid");
+    }
+    else {
+        emailInput.classList.remove("is-valid");
+        emailInput.classList.add("is-invalid");
+    }
+
+    checkCreateValidity();
+}
+
+emailInput.addEventListener("input", validateEmail);
             }
             newMobile.addEventListener('input', e => validateNewMobile(e.target.value));
 
@@ -266,8 +297,13 @@
             confirmPassword.addEventListener('input', e => validateConfirm(e.target.value));
 
             function checkCreateValidity() {
-                createBtn.disabled = !(isNewNameValid && isNewMobileValid && isNewPasswordValid && isConfirmValid);
-            }
+createBtn.disabled = !(
+    isNewNameValid &&
+    isNewMobileValid &&
+    isEmailValid &&
+    isNewPasswordValid &&
+    isConfirmValid
+);            }
 
             document.getElementById('toggleNewPassword').addEventListener('click', function() {
                 const t = newPassword.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -329,21 +365,6 @@ function validateEmail(){
     }
 
     validateForm();
-}const isEmailValid =
-/^[^\s@]+@[^\s@]+\.[^\s@]+$/
-.test(emailInput.value.trim());
-
-if(
-    isRoleSelected &&
-    isNameValid &&
-    isMobileValid &&
-    isEmailValid &&
-    isPasswordValid
-){
-    loginBtn.disabled = false;
-}
-else{
-    loginBtn.disabled = true;
 }
 
 
